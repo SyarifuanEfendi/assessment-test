@@ -1,13 +1,13 @@
 package database
 
 import (
-	"fmt"
+	"assesment-test/logger"
 	"os"
 
 	"github.com/joho/godotenv"
+	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	log "github.com/sirupsen/logrus"
 )
 
 var Db *gorm.DB
@@ -20,7 +20,7 @@ func InitDB() *gorm.DB {
 func connectDB() *gorm.DB {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		logger.LoggerFatal("Error loading .env file")
 	}
 
 	dbHost := os.Getenv("DB_HOST")
@@ -33,19 +33,9 @@ func connectDB() *gorm.DB {
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	if err != nil {
-		fmt.Println("Error konek ke database")
-		log.SetFormatter(&log.TextFormatter{
-			DisableColors: true,
-			FullTimestamp: true,
-		})
+		logger.LoggerFatal("Error Connect to Database")
 		return nil
 	}
-	log.WithFields(log.Fields{
-	
-	}).Info("Successfully connected to database")
-	log.SetFormatter(&log.TextFormatter{
-		DisableColors: true,
-		FullTimestamp: true,
-	})
+	log.WithFields(log.Fields{}).Info("Successfully connected to database")
 	return db
 }
