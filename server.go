@@ -1,8 +1,8 @@
 package main
 
 import (
-	"assesment-test/controller"
-	"assesment-test/config"
+	"assesment-test/api/controller"
+	"assesment-test/api/config"
 	"fmt"
 	"net/http"
 	"time"

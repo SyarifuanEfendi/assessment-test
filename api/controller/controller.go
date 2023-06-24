@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"assesment-test/config"
-	"assesment-test/logger"
-	"assesment-test/model"
+	"assesment-test/api/config"
+	"assesment-test/api/logger"
+	"assesment-test/api/model"
 
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"

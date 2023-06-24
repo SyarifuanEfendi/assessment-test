@@ -1,7 +1,7 @@
 package database
 
 import (
-	"assesment-test/logger"
+	"assesment-test/api/logger"
 	"os"
 
 	"github.com/joho/godotenv"
